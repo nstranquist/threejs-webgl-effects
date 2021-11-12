@@ -1,21 +1,23 @@
 import { Canvas } from '@react-three/fiber'
+import { useRecoilState } from 'recoil';
+import { pageState } from './atoms'
+import { GettingStarted } from './components/GettingStarted'
 
 function App() {
-  return (
-    <div id="canvas-container">
-      {/* "Canvas" sets up a Scene and a Camera behind the scenes. It renders the scene every frame, no render loop required */}
-      <Canvas>
-        {/* "mesh" is needed to see anything. equivalent to 'new THREE.Mesh()' */}
-        {/* - it is a basic scene object in three.js, used to hold geometry and material for 3D space */}
-        <mesh>
-          <boxGeometry /> {/* args={[2,2,2]}  for width, length, depth */}
-          <meshStandardMaterial />
-        </mesh>
+  const [page, setPage] = useRecoilState(pageState)
 
-        {/* Add ambient lights to Canvas */}
-        <ambientLight intensity={0.1} />
-        <directionalLight color="red" position={[0,0,5]} />
-      </Canvas>
+  const renderPage = () => {
+    switch(page) {
+      case "getting-started":
+        return <GettingStarted />
+      default:
+        return <div>No Page Selected</div>
+    }
+  }
+
+  return (
+    <div className="app-container">
+      {renderPage()}
     </div>
   );
 }
