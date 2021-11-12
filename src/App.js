@@ -3,8 +3,9 @@ import { useRecoilState } from 'recoil';
 import { pageState } from './atoms'
 import { GettingStarted } from './components/GettingStarted'
 import { Tutorial1 } from './components/Tutorial1'
+import { LoadingModels } from './components/LoadingModels/index.js'
 
-const pages = ["getting-started", "tutorial-1"]
+const pages = ["getting-started", "tutorial-1", "loading-models"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -15,6 +16,8 @@ function App() {
         return <GettingStarted />
       case "tutorial-1":
         return <Tutorial1 />
+      case "loading-models":
+        return <LoadingModels />
       default:
         return <div>No Page Selected</div>
     }
@@ -44,10 +47,16 @@ const StyledApp = styled.div`
     min-height: 100vh;
 
     .page-nav-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
       height: 60px;
+      z-index: 1000;
     }
 
     .nav-button {
@@ -68,7 +77,8 @@ const StyledApp = styled.div`
     }
   }
   #canvas-container {
-
+    height: 100vh;
+    width: 100vw;
   }
 `
 
