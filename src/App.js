@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Canvas } from '@react-three/fiber'
 import { useRecoilState } from 'recoil';
 import { pageState } from './atoms'
 import { GettingStarted } from './components/GettingStarted'
+import { Tutorial1 } from './components/Tutorial1'
 
-const pages = ["getting-started"]
+const pages = ["getting-started", "tutorial-1"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -13,6 +13,8 @@ function App() {
     switch(page) {
       case "getting-started":
         return <GettingStarted />
+      case "tutorial-1":
+        return <Tutorial1 />
       default:
         return <div>No Page Selected</div>
     }
