@@ -4,8 +4,9 @@ import { pageState } from './atoms'
 import { GettingStarted } from './components/GettingStarted'
 import { Tutorial1 } from './components/Tutorial1'
 import { LoadingModels } from './components/LoadingModels/index.js'
+import { LoadingTextures } from './components/LoadingTextures'
 
-const pages = ["getting-started", "tutorial-1", "loading-models"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -18,6 +19,8 @@ function App() {
         return <Tutorial1 />
       case "loading-models":
         return <LoadingModels />
+      case "loading-textures":
+        return <LoadingTextures />
       default:
         return <div>No Page Selected</div>
     }
@@ -77,8 +80,9 @@ const StyledApp = styled.div`
     }
   }
   #canvas-container {
-    height: 100vh;
+    height: calc(100vh - 60px);
     width: 100vw;
+    padding-top: 60px;
   }
 `
 
