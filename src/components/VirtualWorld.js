@@ -70,6 +70,7 @@ const StyledVirtualWorld = styled.div`
     background: transparent;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
     
     button {
       /* border: none;
@@ -133,7 +134,7 @@ function InstancedSpheres({ number }) {
   const [ref] = useSphere(index => ({
     mass: 1,
     position: [Math.random() - 0.5, Math.random() - 0.5, index * 4],
-    args:1
+    args:[1]
   }))
   const colors = useMemo(() => {
     const array = new Float32Array(number * 3)
