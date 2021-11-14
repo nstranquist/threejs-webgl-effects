@@ -6,8 +6,9 @@ import { Tutorial1 } from './components/Tutorial1'
 import { LoadingModels } from './components/LoadingModels/index.js'
 import { LoadingTextures } from './components/LoadingTextures'
 import { SpringAnimations } from './components/SpringAnimations'
+import { VirtualWorld } from './components/VirtualWorld'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -24,6 +25,8 @@ function App() {
         return <LoadingTextures />
       case "spring-animations":
         return <SpringAnimations />
+      case "virtual-world":
+        return <VirtualWorld />
       default:
         return <div>No Page Selected</div>
     }
