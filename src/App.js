@@ -63,6 +63,7 @@ const StyledApp = styled.div`
       flex-wrap: wrap;
       height: 60px;
       z-index: 1000;
+      background: transparent;
     }
 
     .nav-button {
@@ -83,9 +84,9 @@ const StyledApp = styled.div`
     }
   }
   #canvas-container {
-    height: calc(100vh - 60px);
+    height: 100vh; //calc(100vh - 60px);
     width: 100vw;
-    padding-top: 60px;
+    /* padding-top: 60px; */
   }
 `
 
