@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { Canvas, useLoader } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Stars } from '@react-three/drei'
+
+// reference: https://www.youtube.com/watch?v=9ZEjSxDRIik
 
 export const VirtualWorld2 = () => {
-  const [bgColor, setBgColor] = useState("darkslategrey")
+  const [bgColor, setBgColor] = useState("black") // darkslategrey
 
   return (
     <StyledVirtualWorld2 id="canvas-container" bgColor={bgColor}>
       <Canvas>
         <OrbitControls />
+        {/* YOOO */}
+        <Stars />
         {/* Need to add lights to show a box in color, not just black */}
         <ambientLight />
         {/* Add spot light to add some perspective */}
