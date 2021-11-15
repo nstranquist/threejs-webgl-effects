@@ -8,8 +8,9 @@ import { LoadingTextures } from './components/LoadingTextures'
 import { SpringAnimations } from './components/SpringAnimations'
 import { VirtualWorld } from './components/VirtualWorld'
 import { VirtualWorld2 } from './components/VirtualWorld2'
+import { Minecraft } from './components/Minecraft/index.js'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -30,6 +31,8 @@ function App() {
         return <VirtualWorld />
       case "virtual-world-2":
         return <VirtualWorld2 />
+      case "minecraft":
+        return <Minecraft />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
