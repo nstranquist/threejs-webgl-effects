@@ -7,8 +7,9 @@ import { LoadingModels } from './components/LoadingModels/index.js'
 import { LoadingTextures } from './components/LoadingTextures'
 import { SpringAnimations } from './components/SpringAnimations'
 import { VirtualWorld } from './components/VirtualWorld'
+import { VirtualWorld2 } from './components/VirtualWorld2'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -27,8 +28,10 @@ function App() {
         return <SpringAnimations />
       case "virtual-world":
         return <VirtualWorld />
+      case "virtual-world-2":
+        return <VirtualWorld2 />
       default:
-        return <div>No Page Selected</div>
+        return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
   }
 
