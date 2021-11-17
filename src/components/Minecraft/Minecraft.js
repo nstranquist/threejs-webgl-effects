@@ -1,10 +1,14 @@
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { Sky } from '@react-three/drei'
 import { Physics, usePlane, useSphere, useBox } from '@react-three/cannon'
-import { RepeatWrapping } from 'three'
+import { RepeatWrapping, Vector3 } from 'three'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useInterval } from './hooks/useInterval'
 import * as textures from './textures'
+import { useKeyboardControls } from './hooks/useKeyboardControls'
+import { useRef, useEffect } from 'react'
+
+const SPEED = 6
 
 export const Minecraft = () => {
 
@@ -42,21 +46,41 @@ const Ground = (props) => {
 
 const Player = (props) => {
   const { camera } = useThree()
-  const [ref] = useSphere(() => ({
+  const [ref, api] = useSphere(() => ({
     mass: 1,
     type: 'Dynamic', // dynamic makes it react to gravity
     ...props
   }))
+  const { moveForward, moveBackward, moveLeft, moveRight, jump } = useKeyboardControls();
+  const velocity = useRef([0,0,0])
+  useEffect(() => {
+    api.velocity.subscribe(v => (velocity.current = v))
+  }, [api.velocity])
 
   // move camera to player position on every frame
   useFrame(() => {
     camera.position.copy(ref.current.position)
+    const direction = new Vector3();
+    const frontVector = new Vector3(0,0,(moveBackward ? 1 : 0) - (moveForward ? 1 : 0));
+    const sideVector = new Vector3((moveLeft ? 1 : 0) - (moveRight ? 1 : 0), 0, 0)
+    direction
+      .subVectors(frontVector, sideVector)
+      .normalize() // make length 1(?)
+      .multiplyScalar(SPEED)
+      .applyEuler(camera.rotation)
+
+    api.velocity.set(direction.x, velocity.current[1], direction.z)
+
+    if (jump && Math.abs(velocity.current[1].toFixed(2)) < 0.05) {
+      api.velocity.set(velocity.current[0], 8, velocity.current[2]);
+    }
   });
 
   return (
-    <mesh ref={ref}>
-
-    </mesh>
+    <>
+      <mesh ref={ref} />
+      {/* FPVControls */}
+    </>
   )
 }
 

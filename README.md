@@ -9,6 +9,19 @@ Here's some cool examples in the docs:
 https://docs.pmnd.rs/react-three-fiber/getting-started/examples
 
 
+
+
+### Future Tutorials to follow:
+
+[ ] https://dev.to/flagrede/making-a-2d-rpg-game-with-react-tree-fiber-4af1
+
+
+### Next Concepts to Grasp:
+
+[ ] Scroll Movements (i.e. rotating a trading card)
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
