@@ -9,8 +9,9 @@ import { SpringAnimations } from './components/SpringAnimations'
 import { VirtualWorld } from './components/VirtualWorld'
 import { VirtualWorld2 } from './components/VirtualWorld2'
 import { Minecraft } from './components/Minecraft/index.js'
+import { SpaceTed } from './components/SpaceTed'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft", "spaceted"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -33,6 +34,8 @@ function App() {
         return <VirtualWorld2 />
       case "minecraft":
         return <Minecraft />
+      case "spaceted":
+        return <SpaceTed />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
