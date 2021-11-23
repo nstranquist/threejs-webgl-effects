@@ -13,9 +13,9 @@ export const SpaceTed = () => {
 
   return (
     <StyledContainer id="canvas-container">
-      <div className="content-container">
+      {/* <div className="content-container">
         <div style={{minHeight: "300vh"}} />
-      </div>
+      </div> */}
       <div className="canvas-scroll-container">
       <Canvas>
         <Suspense fallback={<Html><p style={{color:"#fff"}}>loading...</p></Html>}>
