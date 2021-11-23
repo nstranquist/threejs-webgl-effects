@@ -2,18 +2,21 @@ import styled from 'styled-components'
 import { useRecoilState } from 'recoil';
 import { Suspense, lazy } from 'react'
 import { pageState } from './atoms'
-// import { Tutorial1 } from './components/Tutorial1'
-// import { LoadingModels } from './components/LoadingModels/index.js'
-// import { LoadingTextures } from './components/LoadingTextures'
-// import { SpringAnimations } from './components/SpringAnimations'
-// import { VirtualWorld } from './components/VirtualWorld'
-// import { VirtualWorld2 } from './components/VirtualWorld2'
-// import { Minecraft } from './components/Minecraft/index.js'
-// import { SpaceTed } from './components/SpaceTed'
-// import { ScrollBoxes } from './components/ScrollBoxes'
-// import { BoxOutlines } from './components/BoxOutlines'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft", "spaceted", "scroll-boxes", "box-outlines"]
+const pages = [
+  "getting-started",
+  "tutorial-1",
+  "loading-models",
+  "loading-textures",
+  "spring-animations",
+  "virtual-world",
+  "virtual-world-2",
+  "minecraft",
+  "spaceted",
+  "scroll-boxes",
+  "box-outlines",
+  "scroll-images",
+]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -53,6 +56,9 @@ function App() {
       case "box-outlines":
         const BoxOutlines = lazy(() => import('./components/BoxOutlines'))
         return <BoxOutlines />
+      case "scroll-images":
+        const ScrollImages = lazy(() => import('./components/ScrollImages'))
+        return <ScrollImages />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }

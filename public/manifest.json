@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SpaceGL | MetaTeds Mint",
+  "name": "Three.js, WebGL effects that can be used in MetaTed's Mint",
   "icons": [
     {
       "src": "favicon.ico",
