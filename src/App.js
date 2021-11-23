@@ -12,9 +12,8 @@ import { Minecraft } from './components/Minecraft/index.js'
 import { SpaceTed } from './components/SpaceTed'
 import { ScrollBoxes } from './components/ScrollBoxes'
 import { BoxOutlines } from './components/BoxOutlines'
-import { ScrollRig } from './components/ScrollRig/ScrollRig'
 
-const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft", "spaceted", "scroll-boxes", "box-outlines", "scroll-rig"]
+const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft", "spaceted", "scroll-boxes", "box-outlines"]
 
 function App() {
   const [page, setPage] = useRecoilState(pageState)
@@ -43,8 +42,6 @@ function App() {
         return <ScrollBoxes />
       case "box-outlines":
         return <BoxOutlines />
-      case "scroll-rig":
-        return <ScrollRig />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }

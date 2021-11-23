@@ -4,6 +4,32 @@ import { useRef, useState } from 'react'
 import styled from 'styled-components'
 import * as THREE from 'three'
 
+const state = {
+  numberBoxes: 5,
+  boxes: [
+    {
+      text: <span>This is some HTML</span>,
+      color: "aquamarine"
+    },
+    {
+      text: <h1>MetaTeds Caption</h1>,
+      color: "yellow"
+    },
+    {
+      text: <h1>Space is the best theme</h1>,
+      color: "aquamarine"
+    },
+    {
+      text: <h1>MetaTeds are Bringing the Metaverse!</h1>,
+      color: "aquamarine"
+    },
+    {
+      text: <h1>Wormhole MetaTed next february!</h1>,
+      color: "aquamarine"
+    },
+  ]
+}
+
 export const ScrollBoxes = () => {
   const scrollRef = useRef();
   const scroll = useRef(0);
@@ -35,7 +61,7 @@ export const ScrollBoxes = () => {
         id="scroll-container"
         onScroll={handleScroll}
       >
-        <div style={{height: "200vh", pointerEvents: "none"}} />
+        <div style={{height: `${state.numberBoxes * 100}vh`, pointerEvents: "none"}} />
       </div>
     </StyledScrollBoxes>
   )
@@ -52,11 +78,12 @@ const StyledScrollBoxes = styled.div`
   }
   .canvas-label {
     pointer-events: none;
+    line-height: 2;
   }
   h1 {
     font-size: 3em;
     letter-spacing: -3px;
-    line-height: 0.7em;
+    line-height: 1.2;
   }
 `
 
@@ -83,8 +110,10 @@ const Scene = () => {
 
   return (
     <>
-      <Box text={<span>This is some HTML</span>} color="aquamarine" />
-      <Box text={<h1>MetaTeds Caption</h1>} color="yellow" position={[0, -viewport.height, 0]} />
+      {state.boxes.map((box, index) => (
+        <Box key={`${box.color}-${index}`} text={box.text} color={box.color} position={[0, -viewport.height * index, 0]} />
+      ))}
+      {/* <Box text={} color="" position={[0, -viewport.height, 0]} /> */}
     </>
   )
 }
@@ -98,7 +127,7 @@ const Box = ({
 
   return (
     <mesh {...rest} onPointerOver={(e) => set(true)} onPointerOut={(e) => set(false)}>
-      <boxGeometry args={[2, 2, 2]} />
+      <boxGeometry args={[3, 3, 3]} />
       <meshStandardMaterial color={hovered ? "hotpink" : color} />
       <Html position={[0, 0, 1]} className="canvas-label" center>
         {text}
