@@ -5,7 +5,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { Suspense, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-export const SpaceTed = () => {
+const SpaceTed = () => {
   // const soltedRef = useRef();
 
   // HEY: SEE THIS FOR NOTES ON HOW TO DO THIS:
@@ -28,6 +28,8 @@ export const SpaceTed = () => {
     </StyledContainer>
   )
 }
+
+export default SpaceTed
 
 function TedMesh() {
   const soltedMap = useLoader(TextureLoader, "/metateds/solted-base.png")

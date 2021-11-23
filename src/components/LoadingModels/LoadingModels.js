@@ -10,7 +10,7 @@ import { Loader } from '../LoaderUI'
 // import 3d model from resources
 
 
-export const LoadingModels = () => {
+const LoadingModels = () => {
 
 
   return (
@@ -25,3 +25,5 @@ export const LoadingModels = () => {
     </div>
   )
 }
+
+export default LoadingModels

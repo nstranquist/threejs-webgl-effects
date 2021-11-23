@@ -33,7 +33,7 @@ export const Scene = () => {
   )
 }
 
-export const LoadingTextures = () => {
+const LoadingTextures = () => {
   return (
     <div id="canvas-container">
       <Canvas>
@@ -45,3 +45,5 @@ export const LoadingTextures = () => {
     </div>
   )
 }
+
+export default LoadingTextures

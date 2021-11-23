@@ -3,7 +3,7 @@ import { useState, useRef } from 'react'
 import { EffectComposer, Outline } from '@react-three/postprocessing'
 
 
-export const BoxOutlines = () => {
+const BoxOutlines = () => {
   const [hovered, onHover] = useState(null)
   const selected = hovered ? [hovered] : undefined
 
@@ -25,7 +25,7 @@ export const BoxOutlines = () => {
   )
 }
 
-
+export default BoxOutlines;
 
 const Box = ({
   onHover,

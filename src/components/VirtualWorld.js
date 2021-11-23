@@ -9,7 +9,7 @@ import styled from 'styled-components'
 
 // reference: https://www.section.io/engineering-education/create-a-3d-world-in-react-using-three.js-react-three-fiber/
 
-export const VirtualWorld = () => {
+const VirtualWorld = () => {
   const [numberOfSpheres, setNumberOfSpheres] = useState(1)
 
   return (
@@ -58,6 +58,8 @@ export const VirtualWorld = () => {
     </StyledVirtualWorld>
   )
 }
+
+export default VirtualWorld
 
 const StyledVirtualWorld = styled.div`
   position: relative;

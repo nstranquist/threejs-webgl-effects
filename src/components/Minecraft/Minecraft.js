@@ -10,7 +10,7 @@ import { useRef, useEffect } from 'react'
 
 const SPEED = 6
 
-export const Minecraft = () => {
+const Minecraft = () => {
 
   return (
     <div id="canvas-container">
@@ -28,6 +28,8 @@ export const Minecraft = () => {
     </div>
   )
 }
+
+export default Minecraft
 
 const Ground = (props) => {
   const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], ...props}))

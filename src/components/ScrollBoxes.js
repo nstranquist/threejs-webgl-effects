@@ -30,7 +30,7 @@ const state = {
   ]
 }
 
-export const ScrollBoxes = () => {
+const ScrollBoxes = () => {
   const scrollRef = useRef();
   const scroll = useRef(0);
 
@@ -66,6 +66,8 @@ export const ScrollBoxes = () => {
     </StyledScrollBoxes>
   )
 }
+
+export default ScrollBoxes;
 
 const StyledScrollBoxes = styled.div`
   #scroll-container {

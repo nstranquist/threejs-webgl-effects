@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 import { useRecoilState } from 'recoil';
+import { Suspense, lazy } from 'react'
 import { pageState } from './atoms'
-import { GettingStarted } from './components/GettingStarted'
-import { Tutorial1 } from './components/Tutorial1'
-import { LoadingModels } from './components/LoadingModels/index.js'
-import { LoadingTextures } from './components/LoadingTextures'
-import { SpringAnimations } from './components/SpringAnimations'
-import { VirtualWorld } from './components/VirtualWorld'
-import { VirtualWorld2 } from './components/VirtualWorld2'
-import { Minecraft } from './components/Minecraft/index.js'
-import { SpaceTed } from './components/SpaceTed'
-import { ScrollBoxes } from './components/ScrollBoxes'
-import { BoxOutlines } from './components/BoxOutlines'
+// import { Tutorial1 } from './components/Tutorial1'
+// import { LoadingModels } from './components/LoadingModels/index.js'
+// import { LoadingTextures } from './components/LoadingTextures'
+// import { SpringAnimations } from './components/SpringAnimations'
+// import { VirtualWorld } from './components/VirtualWorld'
+// import { VirtualWorld2 } from './components/VirtualWorld2'
+// import { Minecraft } from './components/Minecraft/index.js'
+// import { SpaceTed } from './components/SpaceTed'
+// import { ScrollBoxes } from './components/ScrollBoxes'
+// import { BoxOutlines } from './components/BoxOutlines'
 
 const pages = ["getting-started", "tutorial-1", "loading-models", "loading-textures", "spring-animations", "virtual-world", "virtual-world-2", "minecraft", "spaceted", "scroll-boxes", "box-outlines"]
 
@@ -21,26 +21,37 @@ function App() {
   const renderPage = () => {
     switch(page) {
       case "getting-started":
+        const GettingStarted = lazy(() => import('./components/GettingStarted'))
         return <GettingStarted />
       case "tutorial-1":
+        const Tutorial1 = lazy(() => import('./components/Tutorial1'))
         return <Tutorial1 />
       case "loading-models":
+        const LoadingModels = lazy(() => import('./components/LoadingModels/LoadingModels'))
         return <LoadingModels />
       case "loading-textures":
+        const LoadingTextures = lazy(() => import('./components/LoadingTextures'))
         return <LoadingTextures />
       case "spring-animations":
+        const SpringAnimations = lazy(() => import('./components/SpringAnimations'))
         return <SpringAnimations />
       case "virtual-world":
+        const VirtualWorld = lazy(() => import('./components/VirtualWorld'))
         return <VirtualWorld />
       case "virtual-world-2":
+        const VirtualWorld2 = lazy(() => import('./components/VirtualWorld2'))
         return <VirtualWorld2 />
       case "minecraft":
+        const Minecraft = lazy(() => import('./components/Minecraft/Minecraft'))
         return <Minecraft />
       case "spaceted":
+        const SpaceTed = lazy(() => import('./components/SpaceTed'))
         return <SpaceTed />
       case "scroll-boxes":
+        const ScrollBoxes = lazy(() => import('./components/ScrollBoxes'))
         return <ScrollBoxes />
       case "box-outlines":
+        const BoxOutlines = lazy(() => import('./components/BoxOutlines'))
         return <BoxOutlines />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
@@ -60,7 +71,9 @@ function App() {
           </button>
         ))}
       </div>
-      {renderPage()}
+      <Suspense fallback={null} >
+        {renderPage()}
+      </Suspense>
     </StyledApp>
   );
 }

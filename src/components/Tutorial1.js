@@ -1,7 +1,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useState, useRef } from 'react'
 
-export const Tutorial1 = () => {
+const Tutorial1 = () => {
   const [active, setActive] = useState(false)
   const [color, setColor] = useState("royalblue")
   const meshRef = useRef();
@@ -27,6 +27,8 @@ export const Tutorial1 = () => {
     </div>
   );
 }
+
+export default Tutorial1
 
 // refactored the mesh here so that it is a child of Canvas, and can use the 'useFrame()'
 const MyMesh = ({

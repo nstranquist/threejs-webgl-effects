@@ -6,7 +6,7 @@ import { Physics, useBox, usePlane } from '@react-three/cannon'
 
 // reference: https://www.youtube.com/watch?v=9ZEjSxDRIik
 
-export const VirtualWorld2 = () => {
+const VirtualWorld2 = () => {
   const [bgColor, setBgColor] = useState("black") // darkslategrey
   const [boxColor, setBoxColor] = useState("hotpink")
   const [planeColor, setPlaneColor] = useState("lightblue")
@@ -31,6 +31,8 @@ export const VirtualWorld2 = () => {
     </StyledVirtualWorld2>
   )
 }
+
+export default VirtualWorld2
 
 function Box({
   boxColor = "hotpink"

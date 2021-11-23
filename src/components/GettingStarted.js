@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 
-export const GettingStarted = () => {
+const GettingStarted = () => {
 
   return (
     <div id="canvas-container">
@@ -20,3 +20,5 @@ export const GettingStarted = () => {
     </div>
   )
 }
+
+export default GettingStarted;

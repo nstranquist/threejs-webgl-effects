@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, animated, config } from '@react-spring/three'
 
-export const SpringAnimations = () => {
+const SpringAnimations = () => {
   return (
     <div id="canvas-container">
       <Canvas>
@@ -13,6 +13,8 @@ export const SpringAnimations = () => {
     </div>
   )
 }
+
+export default SpringAnimations
 
 export const RotatingBox = () => {
   const myMesh = useRef();
