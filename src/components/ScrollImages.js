@@ -4,6 +4,8 @@ import { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Preload, ScrollControls, Scroll, useScroll, Image, useFBO, PerspectiveCamera } from '@react-three/drei'
 
+// https://codesandbox.io/s/scrollcontrols-with-minimap-yjhzv
+
 function Images() {
   const { width, height } = useThree((state) => state.viewport)
   const data = useScroll()
@@ -20,13 +22,13 @@ function Images() {
   })
   return (
     <group ref={group}>
-      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="/scroll/1/img1.jpeg" />
-      <Image position={[2, 0, 1]} scale={3} url="/scroll/1/img6.jpeg" />
-      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="/scroll/1/trip2.jpeg" />
-      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="/scroll/1/img8.jpeg" />
-      <Image position={[0.75, -height, 3.5]} scale={1.5} url="/scroll/1/trip4.jpeg" />
-      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="/scroll/1/img3.jpeg" />
-      <Image position={[0, -height * 2 - height / 4, 0]} scale={[width, height / 2, 1]} url="/scroll/1/img7.jpeg" />
+      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="/scroll/1-images/img1.jpeg" />
+      <Image position={[2, 0, 1]} scale={3} url="/scroll/1-images/img6.jpeg" />
+      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="/scroll/1-images/trip2.jpeg" />
+      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="/scroll/1-images/img8.jpeg" />
+      <Image position={[0.75, -height, 3.5]} scale={1.5} url="/scroll/1-images/trip4.jpeg" />
+      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="/scroll/1-images/img3.jpeg" />
+      <Image position={[0, -height * 2 - height / 4, 0]} scale={[width, height / 2, 1]} url="/scroll/1-images/img7.jpeg" />
     </group>
   )
 }
