@@ -20,6 +20,7 @@ const pages = [
   "camera-scroll",
   "sprite-as-3d",
   "router-transitions",
+  "rotating-rocket",
 ]
 
 function App() {
@@ -75,6 +76,9 @@ function App() {
       case "router-transitions":
         const RouterTransitions = lazy(() => import('./components/RouterTransitions/RouterTransitions'))
         return <RouterTransitions />
+      case "rotating-rocket":
+        const RotatingRocket = lazy(() => import('./components/RotatingRocket'))
+        return <RotatingRocket />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
