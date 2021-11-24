@@ -7,15 +7,20 @@ import { EffectComposer, DepthOfField, Vignette } from '@react-three/postprocess
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 // import Fireflies from "./Fireflies"
 // resources
+
+import soltedUrl from "../../assets/sprites/metateds/solted-2.png"
+import bearUrl from "../../assets/sprites/SpriteAs3D/bear.png"
+
 import bgUrl from "../../assets/sprites/SpriteAs3D/bg.jpeg"
 import starsUrl from "../../assets/sprites/SpriteAs3D/stars.png"
 import groundUrl from "../../assets/sprites/SpriteAs3D/ground.png"
-import bearUrl from "../../assets/sprites/SpriteAs3D/bear.png"
 import leaves1Url from "../../assets/sprites/SpriteAs3D/leaves1.png"
 import leaves2Url from "../../assets/sprites/SpriteAs3D/leaves2.png"
+
+// extends LayerMaterial from three.js
 import "./layerMaterial"
 
-import { BlendFunction } from 'postprocessing'
+// import { BlendFunction } from 'postprocessing'
 
 // https://codesandbox.io/s/xgjtc
 // https://github.com/spite/THREE.MeshLine
@@ -43,17 +48,17 @@ const SpriteAs3D = () => {
       <div className="main">
         <div className="code">
           <div className="code-container">
-            <span>code here</span>
+            <ButtonLink className="mint-button">Mint Now</ButtonLink>
           </div>
         </div>
-        <a href="https://github.com/drcmda/zustand" className="top-right" children="Github" />
-        <a href="https://twitter.com/0xca0a" className="bottom-right" children="Twitter" />
+        <a href="https://github.com/nstranquist" className="top-right" children="Github" />
+        <a href="https://twitter.com/MetaTeds" className="bottom-right" children="Twitter" />
         <a
-          href="https://www.instagram.com/tina.henschel/"
+          href="https://metateds.com"
           className="bottom-left"
-          children="Illustrations @ Tina Henschel"
+          children="Bringing you into the Metaverse"
         />
-        <span className="header-left">Zustand</span>
+        <span className="header-left">METATEDS</span>
       </div>
     </StyledSprite3D>
   )
@@ -79,14 +84,16 @@ const Effects = forwardRef((props, ref) => {
 function Scene({ dof }) {
   const scaleN = useAspect(1600, 1000, 1)
   const scaleW = useAspect(2200, 1000, 1)
-  const textures = useLoader(TextureLoader, [bgUrl, starsUrl, groundUrl, bearUrl, leaves1Url, leaves2Url])
+  const textures = useLoader(TextureLoader, [bgUrl, starsUrl, groundUrl, soltedUrl, leaves1Url, leaves2Url])
+
   const subject = useRef()
   const group = useRef()
   const layersRef = useRef([])
+
   const [movementVector] = useState(() => new THREE.Vector3())
   const [tempVector] = useState(() => new THREE.Vector3())
   const [focusVector] = useState(() => new THREE.Vector3())
-  console.log('textures:', textures)
+
   const layers = [
     { texture: textures[0], z: 0, factor: 0.005, scale: scaleW },
     { texture: textures[1], z: 10, factor: 0.005, scale: scaleW },
@@ -95,7 +102,6 @@ function Scene({ dof }) {
     { texture: textures[4], factor: 0.03, scaleFactor: 1, z: 40, wiggle: 0.24, scale: scaleW },
     { texture: textures[5], factor: 0.04, scaleFactor: 1.3, z: 49, wiggle: 0.3, scale: scaleW },
   ]
-  console.log('layers:', layers)
 
   useFrame((state, delta) => {
     dof.current.target = focusVector.lerp(subject.current.position, 0.05)
@@ -126,6 +132,16 @@ function Scene({ dof }) {
   )
 }
 
+const ButtonLink = styled.a`
+  display: block;
+  border-radius: 25px;
+  padding: 8px 12px;
+  background: #EFBB01;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1;
+`;
 
 const StyledSprite3D = styled.div`
 * {
@@ -326,15 +342,18 @@ span.header-left {
 
 a {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto,
-    segoe ui, arial, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: inherit;
-  position: absolute;
-  display: inline;
-  text-decoration: none;
-  z-index: 1;
-  pointer-events: all;
+  segoe ui, arial, sans-serif;
+
+  &:not(.mint-button) {
+    font-weight: 400;
+    font-size: 16px;
+    color: inherit;
+    position: absolute;
+    display: inline;
+    text-decoration: none;
+    z-index: 1;
+    pointer-events: all;
+  }
 }
 
 a.top-left {
