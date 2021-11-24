@@ -17,6 +17,7 @@ const pages = [
   "box-outlines",
   "scroll-images",
   "scroll-intersect",
+  "camera-scroll",
 ]
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
       case "scroll-intersect":
         const ScrollIntersect = lazy(() => import('./components/ScrollIntersect'))
         return <ScrollIntersect />
+      case "camera-scroll":
+        const CameraScroll = lazy(() => import('./components/CameraScroll'))
+        return <CameraScroll />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
