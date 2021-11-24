@@ -29,8 +29,9 @@ const SpriteAs3D = () => {
   return (
     <StyledSprite3D id="canvas-container">
       <Canvas
+        linear
         orthographic
-        gl={{ powerPreference: "high-performance", antialias: false, stencil: false, alpha: false, depth: false }}
+        gl={{ antialias: false, stencil: false, alpha: false, depth: false }}
         camera={{ zoom: 5, position: [0, 0, 200], far: 300, near: 0 }}>
           <ambientLight intensity={0.1} />
         <Suspense fallback={<Html>Loading...</Html>}>
@@ -68,7 +69,8 @@ const Effects = forwardRef((props, ref) => {
   return (
     <EffectComposer multisampling={0}>
       <DepthOfField ref={ref} bokehScale={4} focalLength={0.1} focusDistance={1} width={width / 2} height={height / 2} />
-      <Vignette offset={0.5} darkness={0.5} eskil={false} blendFunction={BlendFunction.NORMAL} />
+      {/* <Vignette offset={0.5} darkness={0.5} eskil={false} blendFunction={BlendFunction.NORMAL} /> */}
+      <Vignette />
     </EffectComposer>
   )
 })
@@ -106,7 +108,7 @@ function Scene({ dof }) {
 
   return (
     <group ref={group}>
-      {/* <Fireflies count={10} radius={80} colors={["orange"]} /> */}
+      {/* <Fireflies count={20} radius={80} colors={["orange"]} /> */}
       {layers.map(({ scale, texture, ref, factor = 0, scaleFactor = 1, wiggle = 0, z }, i) => (
         <Plane scale={scale} args={[1, 1, wiggle ? 10 : 1, wiggle ? 10 : 1]} position-z={z} key={i} ref={ref}>
           <layerMaterial
