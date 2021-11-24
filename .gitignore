@@ -28,6 +28,8 @@ public/images
 public/metateds
 public/scroll
 public/sprites
+public/assets
 
 src/assets/models
 src/assets/sprites
+src/assets/other

@@ -18,7 +18,8 @@ const pages = [
   "scroll-images",
   "scroll-intersect",
   "camera-scroll",
-  "sprite-as-3d"
+  "sprite-as-3d",
+  "router-transitions",
 ]
 
 function App() {
@@ -71,6 +72,9 @@ function App() {
       case "sprite-as-3d":
         const SpriteAs3D = lazy(() => import('./components/SpriteAs3D/SpriteAs3D'))
         return <SpriteAs3D />
+      case "router-transitions":
+        const RouterTransitions = lazy(() => import('./components/RouterTransitions/RouterTransitions'))
+        return <RouterTransitions />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
