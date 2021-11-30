@@ -21,7 +21,8 @@ const pages = [
   "sprite-as-3d",
   "router-transitions",
   "rotating-rocket",
-  "scroll-effects-1"
+  "scroll-effects-1",
+  "3d-text-scroll"
 ]
 
 function App() {
@@ -83,6 +84,9 @@ function App() {
       case "scroll-effects-1":
         const ScrollEffects1 = lazy(() => import('./components/ScrollEffects1/ScrollEffects1'))
         return <ScrollEffects1 />
+      case "3d-text-scroll":
+        const Text3DScroll = lazy(() => import('./components/Text3DScroll'))
+        return <Text3DScroll />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
