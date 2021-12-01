@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Suspense, useMemo, useEffect, useRef, useLayoutEffect } from "react"
 import * as THREE from 'three'
 import { Canvas, useLoader, useThree, useFrame, extend } from '@react-three/fiber'
-import { useAspect, Html, OrbitControls } from "@react-three/drei"
+import { useAspect, Html } from "@react-three/drei"
 import { Flex, Box, useReflow } from "@react-three/flex"
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
@@ -54,9 +54,7 @@ const Text3DScroll = () => {
           shadow-mapSize-height={1024}
         />
 
-        <OrbitControls />
-
-        <Suspense fallback={<Html center>loading..</Html>}>
+        <Suspense fallback={<Html center>loading...</Html>}>
           <Grid />
         </Suspense>
       </Canvas>

@@ -22,7 +22,8 @@ const pages = [
   "router-transitions",
   "rotating-rocket",
   "scroll-effects-1",
-  "3d-text-scroll"
+  "3d-text-scroll",
+  "nico-scroll-1",
 ]
 
 function App() {
@@ -87,6 +88,9 @@ function App() {
       case "3d-text-scroll":
         const Text3DScroll = lazy(() => import('./components/Text3DScroll'))
         return <Text3DScroll />
+      case "nico-scroll-1":
+        const NicoScroll1 = lazy(() => import('./components/Nico-Scroll-1'))
+        return <NicoScroll1 />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }

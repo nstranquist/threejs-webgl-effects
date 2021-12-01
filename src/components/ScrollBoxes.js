@@ -1,8 +1,8 @@
+import { useRef, useState, Suspense } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
-import { useRef, useState } from 'react'
 import styled from 'styled-components'
-import * as THREE from 'three'
+import { MathUtils, Vector3 } from 'three'
 
 const state = {
   numberBoxes: 5,
@@ -51,9 +51,11 @@ const ScrollBoxes = () => {
         <ambientLight />
         <pointLight position={[10, 0, 10]} />
 
-        <ScrollContainer scroll={scroll}>
-          <Scene />
-        </ScrollContainer>
+        <Suspense fallback={<Html center style={{background:"#000",color:"#fff"}}>Loading...</Html>}>
+          <ScrollContainer scroll={scroll}>
+            <Scene />
+          </ScrollContainer>
+        </Suspense>
       </Canvas>
 
       <div
@@ -98,7 +100,7 @@ const ScrollContainer = ({
   const group = useRef();
 
   useFrame((state, delta) => {
-    group.current.position.y = THREE.MathUtils.damp(group.current.position.y, viewport.height * scroll.current, 4, delta)
+    group.current.position.y = MathUtils.damp(group.current.position.y, viewport.height * scroll.current, 4, delta)
     // Or: group.current.position.lerp(vec.set(0, viewport.height * scroll.current, 0), 0.1)
   })
   
@@ -123,12 +125,13 @@ const Scene = () => {
 const Box = ({
   text,
   color,
+  position,
   ...rest
 }) => {
   const [hovered, set] = useState(false)
 
   return (
-    <mesh {...rest} onPointerOver={(e) => set(true)} onPointerOut={(e) => set(false)}>
+    <mesh {...rest} position={position} onPointerOver={(e) => set(true)} onPointerOut={(e) => set(false)}>
       <boxGeometry args={[3, 3, 3]} />
       <meshStandardMaterial color={hovered ? "hotpink" : color} />
       <Html position={[0, 0, 1]} className="canvas-label" center>
