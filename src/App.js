@@ -24,6 +24,7 @@ const pages = [
   "scroll-effects-1",
   "3d-text-scroll",
   "nico-scroll-1",
+  "more-scroll",
 ]
 
 function App() {
@@ -91,6 +92,9 @@ function App() {
       case "nico-scroll-1":
         const NicoScroll1 = lazy(() => import('./components/Nico-Scroll-1'))
         return <NicoScroll1 />
+      case "more-scroll":
+        const MoreScroll = lazy(() => import('./components/MoreScroll'))
+        return <MoreScroll />
       default:
         return <div><h1>No Page Selected</h1><p><button onClick={() => setPage("getting-started")}>Reset</button></p></div>
     }
